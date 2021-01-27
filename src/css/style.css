@@ -31,7 +31,7 @@ main {
 
 .container {
     position: relative;
-    max-width: 640px;
+    width: 640px;
     margin: 50px auto;
     display: flex;
     align-items: center;
@@ -53,14 +53,28 @@ main {
     background: var(--primary-color);
     border-radius: 5px;
     color: var(--white);
-    width: 70%;
+    width: 95%;
     height: 40px;
     font-size: 30px;
     margin-bottom: 10px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+label {
+    margin-bottom: 10px;    
+}
+
 @media (max-width: 640px) {
     p {
         font-size: 42px;
+    }
+
+    main {
+        padding: 20px;
     }
 }

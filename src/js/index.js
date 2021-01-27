@@ -6,13 +6,13 @@ import {PassWordGenerator} from "../js/class/passWordGenerator";
     let password = new PassWordGenerator();
     let $p = document.querySelector(".result");
     
-    $p.innerHTML = cpf.init();
+    $p.innerHTML = password.init();
 
     document.addEventListener("click", function(e){
         e.preventDefault();
         if(e.target.className === 'init') {
-            password = new PassWordGenerator();
-            $p.innerHTML = cpf.init();
+            password = new PassWordGenerator(Number(document.querySelector("form #length").value));
+            $p.innerHTML = password.init();
         }
     })
 })();

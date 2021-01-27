@@ -14,9 +14,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var PassWordGenerator = function PassWordGenerator() {
-  _classCallCheck(this, PassWordGenerator);
-};
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var PassWordGenerator = /*#__PURE__*/function () {
+  function PassWordGenerator() {
+    var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+
+    _classCallCheck(this, PassWordGenerator);
+
+    this.password = [];
+    this.numberOfPasswordCharacters = n;
+  }
+
+  _createClass(PassWordGenerator, [{
+    key: "init",
+    value: function init() {
+      for (var i = 0; i < this.numberOfPasswordCharacters; i++) {
+        this.password.push(this.generate());
+      }
+
+      return this.password.join("");
+    }
+  }, {
+    key: "randomLetter",
+    value: function randomLetter() {
+      var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+      return alphabet[PassWordGenerator.getRandomArbitrary(0, alphabet.length + 1)];
+    }
+  }, {
+    key: "randomSignal",
+    value: function randomSignal() {
+      var signals = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '+', '.', ',', ';', '?', '{', '[', '}', ']', '^', '>', '<', ':'];
+      return signals[PassWordGenerator.getRandomArbitrary(0, signals.length + 1)];
+    }
+  }, {
+    key: "generate",
+    value: function generate() {
+      var functions = [this.randomLetter(), this.randomSignal(), PassWordGenerator.getRandomArbitrary(0, 10)];
+      return functions[PassWordGenerator.getRandomArbitrary(0, 3)];
+    }
+  }], [{
+    key: "getRandomArbitrary",
+    value: function getRandomArbitrary(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+  }]);
+
+  return PassWordGenerator;
+}();
 
 
 
@@ -37,13 +84,13 @@ __webpack_require__.r(__webpack_exports__);
 (function () {
   var password = new _js_class_passWordGenerator__WEBPACK_IMPORTED_MODULE_1__.PassWordGenerator();
   var $p = document.querySelector(".result");
-  $p.innerHTML = cpf.init();
+  $p.innerHTML = password.init();
   document.addEventListener("click", function (e) {
     e.preventDefault();
 
     if (e.target.className === 'init') {
-      password = new _js_class_passWordGenerator__WEBPACK_IMPORTED_MODULE_1__.PassWordGenerator();
-      $p.innerHTML = cpf.init();
+      password = new _js_class_passWordGenerator__WEBPACK_IMPORTED_MODULE_1__.PassWordGenerator(Number(document.querySelector("form #length").value));
+      $p.innerHTML = password.init();
     }
   });
 })();
@@ -69,7 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --primary-color: #5040C0;\n    --white: rgb(255, 255, 255);\n}\n\n* {\n    font-family: 'Montserrat', sans-serif;;\n    box-sizing: border-box;\n    outline: 0;\n}\n\np {\n    font-size: 50px;\n}\n\nh1{\n    border-bottom: solid 1px #5040C0;\n}\n\nbody {\n    margin: 0;\n    padding: 0;\n    background: var(--primary-color);\n}\n\nmain {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.container {\n    position: relative;\n    max-width: 640px;\n    margin: 50px auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    border-radius: 20px;\n    text-align: left;\n    background: var(--white);\n    box-shadow: 2px 6px 17px 0px rgba(0,0,0,0.75);\n}\n\n.container p{\n    line-height: 1.6em;\n    padding: 20px;\n}\n\n.container button {\n    border: none;\n    background: var(--primary-color);\n    border-radius: 5px;\n    color: var(--white);\n    width: 70%;\n    height: 40px;\n    font-size: 30px;\n    margin-bottom: 10px;\n}\n\n@media (max-width: 640px) {\n    p {\n        font-size: 42px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/css/style.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;IACxB,2BAA2B;AAC/B;;AAEA;IACI,qCAAqC;IACrC,sBAAsB;IACtB,UAAU;AACd;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gCAAgC;AACpC;;AAEA;IACI,SAAS;IACT,UAAU;IACV,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,gBAAgB;IAChB,iBAAiB;IACjB,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,sBAAsB;IACtB,mBAAmB;IACnB,gBAAgB;IAChB,wBAAwB;IACxB,6CAA6C;AACjD;;AAEA;IACI,kBAAkB;IAClB,aAAa;AACjB;;AAEA;IACI,YAAY;IACZ,gCAAgC;IAChC,kBAAkB;IAClB,mBAAmB;IACnB,UAAU;IACV,YAAY;IACZ,eAAe;IACf,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;AACJ","sourcesContent":[":root {\n    --primary-color: #5040C0;\n    --white: rgb(255, 255, 255);\n}\n\n* {\n    font-family: 'Montserrat', sans-serif;;\n    box-sizing: border-box;\n    outline: 0;\n}\n\np {\n    font-size: 50px;\n}\n\nh1{\n    border-bottom: solid 1px #5040C0;\n}\n\nbody {\n    margin: 0;\n    padding: 0;\n    background: var(--primary-color);\n}\n\nmain {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.container {\n    position: relative;\n    max-width: 640px;\n    margin: 50px auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    border-radius: 20px;\n    text-align: left;\n    background: var(--white);\n    box-shadow: 2px 6px 17px 0px rgba(0,0,0,0.75);\n}\n\n.container p{\n    line-height: 1.6em;\n    padding: 20px;\n}\n\n.container button {\n    border: none;\n    background: var(--primary-color);\n    border-radius: 5px;\n    color: var(--white);\n    width: 70%;\n    height: 40px;\n    font-size: 30px;\n    margin-bottom: 10px;\n}\n\n@media (max-width: 640px) {\n    p {\n        font-size: 42px;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n    --primary-color: #5040C0;\n    --white: rgb(255, 255, 255);\n}\n\n* {\n    font-family: 'Montserrat', sans-serif;;\n    box-sizing: border-box;\n    outline: 0;\n}\n\np {\n    font-size: 50px;\n}\n\nh1{\n    border-bottom: solid 1px #5040C0;\n}\n\nbody {\n    margin: 0;\n    padding: 0;\n    background: var(--primary-color);\n}\n\nmain {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.container {\n    position: relative;\n    width: 640px;\n    margin: 50px auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    border-radius: 20px;\n    text-align: left;\n    background: var(--white);\n    box-shadow: 2px 6px 17px 0px rgba(0,0,0,0.75);\n}\n\n.container p{\n    line-height: 1.6em;\n    padding: 20px;\n}\n\n.container button {\n    border: none;\n    background: var(--primary-color);\n    border-radius: 5px;\n    color: var(--white);\n    width: 95%;\n    height: 40px;\n    font-size: 30px;\n    margin-bottom: 10px;\n}\n\nform {\n    display: flex;\n    flex-direction: column;\n\n}\n\nlabel {\n    margin-bottom: 10px;    \n}\n\n@media (max-width: 640px) {\n    p {\n        font-size: 42px;\n    }\n\n    main {\n        padding: 20px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/css/style.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;IACxB,2BAA2B;AAC/B;;AAEA;IACI,qCAAqC;IACrC,sBAAsB;IACtB,UAAU;AACd;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,gCAAgC;AACpC;;AAEA;IACI,SAAS;IACT,UAAU;IACV,gCAAgC;AACpC;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,iBAAiB;IACjB,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,sBAAsB;IACtB,mBAAmB;IACnB,gBAAgB;IAChB,wBAAwB;IACxB,6CAA6C;AACjD;;AAEA;IACI,kBAAkB;IAClB,aAAa;AACjB;;AAEA;IACI,YAAY;IACZ,gCAAgC;IAChC,kBAAkB;IAClB,mBAAmB;IACnB,UAAU;IACV,YAAY;IACZ,eAAe;IACf,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,sBAAsB;;AAE1B;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;IAEA;QACI,aAAa;IACjB;AACJ","sourcesContent":[":root {\n    --primary-color: #5040C0;\n    --white: rgb(255, 255, 255);\n}\n\n* {\n    font-family: 'Montserrat', sans-serif;;\n    box-sizing: border-box;\n    outline: 0;\n}\n\np {\n    font-size: 50px;\n}\n\nh1{\n    border-bottom: solid 1px #5040C0;\n}\n\nbody {\n    margin: 0;\n    padding: 0;\n    background: var(--primary-color);\n}\n\nmain {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n.container {\n    position: relative;\n    width: 640px;\n    margin: 50px auto;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-direction: column;\n    border-radius: 20px;\n    text-align: left;\n    background: var(--white);\n    box-shadow: 2px 6px 17px 0px rgba(0,0,0,0.75);\n}\n\n.container p{\n    line-height: 1.6em;\n    padding: 20px;\n}\n\n.container button {\n    border: none;\n    background: var(--primary-color);\n    border-radius: 5px;\n    color: var(--white);\n    width: 95%;\n    height: 40px;\n    font-size: 30px;\n    margin-bottom: 10px;\n}\n\nform {\n    display: flex;\n    flex-direction: column;\n\n}\n\nlabel {\n    margin-bottom: 10px;    \n}\n\n@media (max-width: 640px) {\n    p {\n        font-size: 42px;\n    }\n\n    main {\n        padding: 20px;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
